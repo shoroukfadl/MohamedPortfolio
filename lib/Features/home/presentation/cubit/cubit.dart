@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:portfolio/Features/home/domain/usecases/get_data_use_case.dart';
 import 'package:portfolio/Features/home/presentation/cubit/state.dart';
@@ -8,11 +9,15 @@ class PortfolioCubit extends HydratedCubit<PortfolioState> {
   PortfolioCubit({required this.getDataUseCase}) : super(PortfolioState.init());
 
   Future<void> getData() async {
+    debugPrint("GET DATTAAA");
     emit(state.copyWith(loading: RequestStatus.loading));
     final res = await getDataUseCase.call();
     res.fold((l) {
+    debugPrint("GET DATTAAA iN FAILURE :: ${l.errorModel?.errorMessage}");
       emit(state.copyWith(loading: RequestStatus.error));
     }, (r) {
+    debugPrint("GET DATTAAA IN SUCCESS  : ${r}"
+        "" );
       emit(state.copyWith(loading: RequestStatus.success, data: r));
     });
   }
