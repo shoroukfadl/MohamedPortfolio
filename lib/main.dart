@@ -29,6 +29,8 @@ void main() async {
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
 
+  debugPrint("YRL : ${SupabaseConfig.url}");
+  debugPrint("ANON : ${SupabaseConfig.anonKey}");
   await Supabase.initialize(url:SupabaseConfig.url, anonKey: SupabaseConfig.anonKey);
   await GitIt.initGitIt();
   setHashUrlStrategy();
