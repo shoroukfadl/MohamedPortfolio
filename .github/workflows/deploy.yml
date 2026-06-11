@@ -46,7 +46,11 @@ jobs:
             --dart-define=SUPABASE_URL=${{ secrets.SUPABASE_URL }} \
             --dart-define=SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
 
-      # 6. Upload build to GitHub Pages
+      # 6. Fix GitHub Pages routing for PathUrlStrategy
+      - name: Create 404 fallback page
+        run: cp build/web/index.html build/web/404.html
+
+      # 7. Upload build to GitHub Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

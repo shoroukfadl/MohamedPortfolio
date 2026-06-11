@@ -29,7 +29,6 @@ void main() async {
   );
 
 
-  debugPrint("ANON : ${SupabaseConfig.anonKey}");
   await Supabase.initialize(url:SupabaseConfig.url, anonKey:SupabaseConfig.anonKey );
   await GitIt.initGitIt();
   setPathUrlStrategy();

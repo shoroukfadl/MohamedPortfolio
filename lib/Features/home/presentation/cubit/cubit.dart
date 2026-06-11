@@ -9,16 +9,11 @@ class PortfolioCubit extends HydratedCubit<PortfolioState> {
   PortfolioCubit({required this.getDataUseCase}) : super(PortfolioState.init());
 
   Future<void> getData() async {
-    debugPrint("GET DATTAAA");
     emit(state.copyWith(loading: RequestStatus.loading));
-    debugPrint("GET DATTAAA loading");
     final res = await getDataUseCase.call();
     res.fold((l) {
-    debugPrint("GET DATTAAA iN FAILURE :: ${l.errorModel?.errorMessage}");
       emit(state.copyWith(loading: RequestStatus.error));
     }, (r) {
-    debugPrint("GET DATTAAA IN SUCCESS  : ${r}"
-        "" );
       emit(state.copyWith(loading: RequestStatus.success, data: r));
     });
   }
