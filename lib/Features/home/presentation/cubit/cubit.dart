@@ -11,6 +11,7 @@ class PortfolioCubit extends HydratedCubit<PortfolioState> {
   Future<void> getData() async {
     debugPrint("GET DATTAAA");
     emit(state.copyWith(loading: RequestStatus.loading));
+    debugPrint("GET DATTAAA loading");
     final res = await getDataUseCase.call();
     res.fold((l) {
     debugPrint("GET DATTAAA iN FAILURE :: ${l.errorModel?.errorMessage}");
