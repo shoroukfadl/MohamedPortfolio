@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Features/home/data/models/portfilio_model.dart';
 import 'package:portfolio/Features/home/domain/entities/portfilio_entity.dart';
 
@@ -21,8 +22,21 @@ class PortfolioState extends Equatable {
   @override
   List<Object?> get props => [data, loading];
 
-   static  PortfolioState fromJson(Map<String, dynamic> json)=> PortfolioState(data:json['data'],loading: RequestStatus.init );
-    Map<String, dynamic>  toJson(PortfolioState state)=> {
+  static PortfolioState fromJson(Map<String, dynamic> json) {
+    try {
+      final rawData = json['data'];
+      return PortfolioState(
+        data: rawData != null
+            ? PortfolioModel.fromJson(rawData as Map<String, dynamic>).fromModel()
+            : null,
+        loading: RequestStatus.init,
+      );
+    } catch (e) {
+      debugPrint("fromJson error: $e");
+      return PortfolioState.init();
+    }
+  }
+  Map<String, dynamic>  toJson(PortfolioState state)=> {
     'data':PortfolioModel.toModel(state.data).toFullJson()
   };
 }
