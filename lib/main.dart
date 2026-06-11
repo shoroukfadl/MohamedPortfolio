@@ -32,7 +32,7 @@ void main() async {
 
   debugPrint("YRL : ${SupabaseConfig.url}");
   debugPrint("ANON : ${SupabaseConfig.anonKey}");
-  await Supabase.initialize(url:SupabaseConfig.url, anonKey: SupabaseConfig.anonKey);
+  await Supabase.initialize(url:SupabaseConfig.url, anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsamhqeHNkbGlkbWZwZndtdnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3Njk3NzQsImV4cCI6MjA5MjM0NTc3NH0.Vv0wRPesQi7BG-iw5SECV_yUmHeZ8IYqlGJreN0thu4');
   await GitIt.initGitIt();
   setHashUrlStrategy();
   runApp(MultiBlocProvider(providers: [
