@@ -3,7 +3,6 @@ import 'package:portfolio/Core/Language/app_styles.dart';
 import 'package:portfolio/Features/home/domain/entities/profile_entity.dart';
 import 'package:portfolio/Utilities/extensions.dart';
 import 'package:portfolio/Widgets/Portfilio/profile_image.dart';
-import 'package:portfolio/Widgets/rounded_image_widget.dart';
 
 class LargeSummarySection extends StatelessWidget {
   final ProfileEntity? profile;

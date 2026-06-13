@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/presentation/widgets/aboutMe/summary_card.dart';
 import 'package:portfolio/Utilities/extensions.dart';
 import 'package:portfolio/Widgets/Buttons/theme_button.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
-import 'menu_button.dart';
 
 class MainLayoutWidget extends StatefulWidget {
   final Widget child;

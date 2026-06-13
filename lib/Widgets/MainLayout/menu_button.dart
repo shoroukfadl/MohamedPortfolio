@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Widgets/MainLayout/AppBar/home_app_bar_item.dart';
 import 'package:portfolio/Widgets/Portfilio/animated_background.dart';
-import 'package:portfolio/Widgets/Portfilio/divider.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
 import '../../Utilities/Constants/strings.dart';

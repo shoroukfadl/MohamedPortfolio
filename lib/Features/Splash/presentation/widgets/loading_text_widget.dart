@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Core/Language/app_styles.dart';
+
 import '../../../../Utilities/extensions.dart';
 
 class LoadingTextWidget extends StatefulWidget {

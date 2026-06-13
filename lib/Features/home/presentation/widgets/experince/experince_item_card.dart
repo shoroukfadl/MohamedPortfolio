@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/domain/entities/experince_entity.dart';
 import 'package:portfolio/Utilities/Constants/date_helper.dart';
 import 'package:portfolio/Utilities/extensions.dart';
-import 'package:portfolio/Utilities/helper_function.dart';
 import 'package:portfolio/Widgets/Custom/card_with_animation.dart';
 import 'package:portfolio/Widgets/Portfilio/divider.dart';
 import 'package:portfolio/Widgets/Portfilio/point_text.dart';

@@ -2,7 +2,6 @@ import 'package:portfolio/Features/home/data/models/profile_model.dart';
 import 'package:portfolio/Features/home/data/models/project_model.dart';
 import 'package:portfolio/Features/home/data/models/tech_skill_model.dart';
 import 'package:portfolio/Features/home/domain/entities/portfilio_entity.dart';
-import 'package:portfolio/Features/home/domain/entities/profile_entity.dart';
 
 import 'certificate_model.dart';
 import 'education_model.dart';

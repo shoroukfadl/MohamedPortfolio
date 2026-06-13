@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/Utilities/extensions.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class ScreenLayoutWidget extends StatefulWidget {
   final List<Widget> children;

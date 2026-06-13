@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/domain/entities/project_entity.dart';
 import 'package:portfolio/Utilities/extensions.dart';
 import 'package:portfolio/Utilities/helper_function.dart';
-import 'package:portfolio/Utilities/portifilo_icons.dart';
 import 'package:portfolio/Widgets/Custom/card_with_animation.dart';
 import 'package:portfolio/Widgets/Custom/card_with_text.dart';
 import 'package:portfolio/Widgets/Portfilio/divider.dart';
@@ -34,8 +33,8 @@ class ProjectItemCard extends StatelessWidget {
               spacing: 8,
               children: [
                 GradintDividerWidget(
-                  color1: colors.accent,
-                  color2: colors.secondary,
+                  color1: colors.secondary,
+                  color2:color?? colors.accent,
                   thickness: 4,
                 ),
                 Row(

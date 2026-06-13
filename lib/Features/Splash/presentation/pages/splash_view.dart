@@ -9,7 +9,7 @@ import 'package:portfolio/Features/home/presentation/cubit/state.dart';
 import 'package:portfolio/Features/home/presentation/pages/home_view.dart';
 import 'package:portfolio/Utilities/Constants/enums.dart';
 import 'package:portfolio/Widgets/Portfilio/profile_image.dart';
-import 'package:portfolio/Widgets/rounded_image_widget.dart';
+
 import '../../../../Utilities/extensions.dart';
 import '../../../../generated/assets.dart';
 import '../../../home/presentation/cubit/cubit.dart';

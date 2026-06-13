@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Features/home/domain/entities/project_entity.dart';
 
 class ProjectModel {
@@ -21,7 +20,6 @@ class ProjectModel {
   });
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
-    debugPrint("DDDD ${json}");
     return ProjectModel(
       id: json['id']?.toString(),
       profileId: json['profile_id'],

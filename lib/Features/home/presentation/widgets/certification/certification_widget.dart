@@ -6,7 +6,6 @@ import 'package:portfolio/Utilities/portifilo_icons.dart';
 import 'package:portfolio/Widgets/Portfilio/divider.dart';
 import 'package:portfolio/Widgets/sections_title_widget.dart';
 
-import '../../../../../Core/Language/app_styles.dart';
 import '../../../../../Utilities/Constants/global_keys.dart';
 import '../../../../../Utilities/Constants/strings.dart';
 import 'certification_card.dart';
