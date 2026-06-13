@@ -6,14 +6,16 @@ import 'package:portfolio/Widgets/sections_title_widget.dart';
 import '../../../../../Utilities/Constants/constants.dart';
 import '../../../../../Utilities/Constants/global_keys.dart';
 import '../../../../../Utilities/Constants/strings.dart';
+import '../../../../../Utilities/portifilo_icons.dart';
 
 class SkillsSection extends StatelessWidget {
   final List<TechnicalSkillEntity> skills;
   final double hozPadding;
-  final double iconSize;
+  final double iconSize,height;
   final int countPerRow;
   const SkillsSection(
       {super.key,
+        this.height=120,
       this.skills = const [],
       this.hozPadding = desktopHozPadding,
       this.iconSize = 40,  this.countPerRow =3,});
@@ -26,16 +28,18 @@ class SkillsSection extends StatelessWidget {
       spacing: 24,
       children: [
         SectionsTitleWidget(
+          icon: Portfolio.skills,
           title: Strings.skill.translate.toUpperCase(),
           key: GlobalKeys.skill,
         ),
         GridView.builder(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount:countPerRow,
-              childAspectRatio:context.isSmall ? 4.2: context.isMedium ? 1.8: 2.2,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16),
+              mainAxisExtent: height,
+              mainAxisSpacing: 24,
+              crossAxisSpacing: 8),
           itemBuilder: (c, u) => SkillCard(
             skill: skills[u],
             iconSize: iconSize,

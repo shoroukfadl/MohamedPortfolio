@@ -20,15 +20,24 @@ class PortfolioState extends Equatable {
       PortfolioState(data: data ?? this.data, loading: loading ?? this.loading);
 
   @override
-  List<Object?> get props => [data, loading];
+  List<Object?> get props => [data, loading,certificationLen,projectLen];
 
+ // ✅ fix toJson
+  Map<String, dynamic> toJson(PortfolioState state) {
+    if (state.data == null) return {};
+    return {
+      'data': PortfolioModel.toModel(state.data).toFullJson(),
+    };
+  }
+
+// ✅ fix fromJson
   static PortfolioState fromJson(Map<String, dynamic> json) {
     try {
-      final rawData = json['data'];
+      if (json.isEmpty || json['data'] == null) return PortfolioState.init();
+
+      final rawData = json['data'] as Map<String, dynamic>;
       return PortfolioState(
-        data: rawData != null
-            ? PortfolioModel.fromJson(rawData as Map<String, dynamic>).fromModel()
-            : null,
+        data: PortfolioModel.fromJson(rawData).fromModel(),
         loading: RequestStatus.init,
       );
     } catch (e) {
@@ -36,7 +45,4 @@ class PortfolioState extends Equatable {
       return PortfolioState.init();
     }
   }
-  Map<String, dynamic>  toJson(PortfolioState state)=> {
-    'data':PortfolioModel.toModel(state.data).toFullJson()
-  };
 }

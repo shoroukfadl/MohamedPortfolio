@@ -115,4 +115,13 @@ abstract class HelperFunctions {
       print('Error: $e');
     }
   }
+
+
+
+  static Color? convertStringToColor (String color)  {
+    final colorN =  int.tryParse(color);
+    if(colorN == null) return null;
+    else return Color(colorN);
+
+  }
 }

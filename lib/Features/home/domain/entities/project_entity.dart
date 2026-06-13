@@ -5,7 +5,7 @@ class ProjectEntity extends Equatable {
   final String? profileId;
   final String? title;
   final String? projectType;
-  final String? platform;
+  final ProjectPlatformEntity? platform;
   final List<String> keyTasks;
   final bool isManual;
 
@@ -29,5 +29,21 @@ class ProjectEntity extends Equatable {
         platform,
         keyTasks,
         isManual,
+      ];
+}
+class ProjectPlatformEntity extends Equatable {
+  final int? id;
+  final String? name;
+  final String? color;
+
+  const ProjectPlatformEntity({
+    this.id, this.name, this.color,
+  });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        id,
+        name,color
       ];
 }

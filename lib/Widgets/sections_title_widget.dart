@@ -8,32 +8,37 @@ import '../Core/Language/app_styles.dart';
 class SectionsTitleWidget extends StatelessWidget {
   final String title;
   final String? subtitle;
+  final IconData icon;
 
   const SectionsTitleWidget(
       {super.key,
       required this.title,
-      this.subtitle});
+      this.subtitle, required this.icon});
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
 
     return Row(
-      spacing: 24,
       children: [
+        Icon(icon,size: 18,color: colors.text1,),
+        4.0.widthBox,
         Text(
           title,
           style: AppTextStyles.sectionTitle(context: context ,color: colors.text1),
         ),
+        24.0.widthBox,
         const DividerWidget().expand,
         if (subtitle != null)
-          CardWithText(
+         ... [
+        24.0.widthBox,
+           CardWithText(
             text: subtitle!,
             textColor: colors.accent,
             color: colors.accent.withValues(alpha: 0.2),
             borderColor: colors.accent,
             style:  AppTextStyles.titleCardSmall(context: context,color: colors.accent),
-          ),
+          ),]
       ],
     );
   }

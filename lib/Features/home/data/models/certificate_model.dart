@@ -22,12 +22,12 @@ class CertificateModel {
   factory CertificateModel.fromJson(Map<String, dynamic> json) {
     return CertificateModel(
       id: json['id']?.toString(),
-      profileId: json['profile_id'] as String,
-      courseName: json['course_name'] as String,
-      provider: json['provider'] as String,
-      issueDate: json['issue_date'] as String,
-      credentialUrl: json['credential_url'] as String,
-      certificateImageUrl: json['certificate_image_url'] as String,
+      profileId: json['profile_id'] ,
+      courseName: json['course_name'] ,
+      provider: json['provider'] ,
+      issueDate: json['issue_date'] ,
+      credentialUrl: json['credential_url'] ,
+      certificateImageUrl: json['certificate_image_url'] ,
     );
   }
 

@@ -19,6 +19,7 @@ class LargeSummarySection extends StatelessWidget {
           height: 120,
           image: profile?.image??"",
         ),
+        8.0.heightBox,
         Text(
           profile?.firstName ?? "",
           style: AppTextStyles.semiBold20(

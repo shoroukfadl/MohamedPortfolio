@@ -62,6 +62,7 @@ class SmallHomeView extends StatelessWidget {
                     skills: state.data?.skills ?? [],
                     iconSize: 20,
                     countPerRow: 1,
+                    height: 100,
 
                   );
                 })),
@@ -70,20 +71,6 @@ class SmallHomeView extends StatelessWidget {
           child: SpacerWidget(),
         ),
 
-
-        const SliverToBoxAdapter(child: SpacerWidget()),
-
-        SliverToBoxAdapter(
-          child: BlocBuilder<PortfolioCubit, PortfolioState>(
-              buildWhen: (c, p) => c.data?.projects != p.data?.projects,
-              builder: (context, state) {
-                return MyProjectsWidget(
-                  projects: state.data?.projects ?? [],
-                  hozPadding: mobileHozPadding,
-
-                );
-              }),
-        ),
         /// Experince
         SliverToBoxAdapter(
             child: BlocBuilder<PortfolioCubit, PortfolioState>(
@@ -94,6 +81,22 @@ class SmallHomeView extends StatelessWidget {
                     hozPadding: mobileHozPadding,
                   );
                 })),
+        const SliverToBoxAdapter(child: SpacerWidget()),
+
+        SliverToBoxAdapter(
+          child: BlocBuilder<PortfolioCubit, PortfolioState>(
+              buildWhen: (c, p) => c.data?.projects != p.data?.projects,
+              builder: (context, state) {
+                return MyProjectsWidget(
+                  projects: state.data?.projects ?? [],
+                  hozPadding: mobileHozPadding,
+                  countPerRow: 1,
+                  height: 208,
+
+                );
+              }),
+        ),
+
 
         const SliverToBoxAdapter(
           child: SpacerWidget(),

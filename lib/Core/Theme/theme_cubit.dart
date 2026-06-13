@@ -12,7 +12,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   }
 
   void getCurrentTheme() {
-    bool isDark = SharedPref.getTheme();
+    bool isDark = SharedPref.getTheme()??false;
     emit(state.copyWithMethod(isDark: isDark));
   }
 }

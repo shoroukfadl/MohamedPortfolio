@@ -6,6 +6,7 @@ import 'package:portfolio/Utilities/extensions.dart';
 
 import '../../../../../Utilities/Constants/global_keys.dart';
 import '../../../../../Utilities/Constants/strings.dart';
+import '../../../../../Utilities/portifilo_icons.dart';
 import '../../../../../Widgets/sections_title_widget.dart';
 import 'education_card.dart';
 
@@ -27,6 +28,7 @@ class EducationSection extends StatelessWidget {
           Strings.education.translate.toUpperCase(),
           style: AppTextStyles.medium12(color: colors.text1),
         ) else SectionsTitleWidget(
+          icon: Portfolio.education,
           title:  Strings.education.translate.toUpperCase(),
         ),
         ListView.builder(

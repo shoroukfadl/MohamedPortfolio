@@ -28,6 +28,7 @@ class LargeHomeView extends StatelessWidget {
                     profile: state.data?.profile,
                     certNumber: state.certificationLen,
                     projectsNumber: state.projectLen,
+
                   );
                 })),
         SliverToBoxAdapter(
@@ -66,7 +67,7 @@ class LargeHomeView extends StatelessWidget {
           child: BlocBuilder<PortfolioCubit, PortfolioState>(
               buildWhen: (c, p) => c.data?.projects != p.data?.projects,
               builder: (context, state) {
-                return MyProjectsWidget(projects: state.data?.projects ?? []);
+                return MyProjectsWidget(projects: state.data?.projects ?? [],height: 220,);
               }),
         ),
 

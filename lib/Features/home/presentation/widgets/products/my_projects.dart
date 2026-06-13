@@ -8,14 +8,18 @@ import '../../../../../Core/Language/app_styles.dart';
 import '../../../../../Utilities/Constants/constants.dart';
 import '../../../../../Utilities/Constants/global_keys.dart';
 import '../../../../../Utilities/Constants/strings.dart';
+import '../../../../../Utilities/portifilo_icons.dart';
 import '../../../../../Widgets/sections_title_widget.dart';
 
 class MyProjectsWidget extends StatefulWidget {
   final List<ProjectEntity> projects;
   final double hozPadding;
-
+  final double height;
+  final int countPerRow;
   const MyProjectsWidget(
       {super.key,
+        this.height=180,
+        this.countPerRow=3,
       this.projects = const [],
       this.hozPadding = desktopHozPadding,
       });
@@ -45,6 +49,7 @@ class _MyProjectsWidgetState extends State<MyProjectsWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionsTitleWidget(
+          icon: Portfolio.projects,
           key: GlobalKeys.projects,
           title: Strings.projects.translate.toUpperCase(),
           subtitle: '${widget.projects.length} Projects',
@@ -88,9 +93,13 @@ class _MyProjectsWidgetState extends State<MyProjectsWidget> {
         if (isMan)
           ProjectsList(
             projects: man,
+            height: widget.height,
+            countPerRow: widget.countPerRow,
           )
         else
           ProjectsList(
+            height: widget.height,
+            countPerRow: widget.countPerRow,
             projects: auto,
           )
       ],

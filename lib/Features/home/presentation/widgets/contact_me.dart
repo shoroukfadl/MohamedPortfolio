@@ -61,7 +61,6 @@ class ContactWidget extends StatelessWidget {
                 },
                 icon: Portfolio.cv,
               ),
-              const ThemeButton(),
             ],
           );
         });

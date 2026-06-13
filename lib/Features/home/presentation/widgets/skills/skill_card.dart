@@ -26,7 +26,7 @@ class SkillCard extends StatelessWidget {
       child:(h)=> Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        spacing: 16,
+        spacing: 10,
         children: [
           Text(
             skill?.category ?? "",
@@ -37,7 +37,7 @@ class SkillCard extends StatelessWidget {
                 )),
           ),
           Wrap(
-            spacing: 8,
+            spacing: 4,
             runSpacing: 8,
             children: [
               ...List.generate(

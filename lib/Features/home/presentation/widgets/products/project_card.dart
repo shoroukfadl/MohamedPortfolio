@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/domain/entities/project_entity.dart';
 import 'package:portfolio/Utilities/extensions.dart';
+import 'package:portfolio/Utilities/helper_function.dart';
 import 'package:portfolio/Utilities/portifilo_icons.dart';
 import 'package:portfolio/Widgets/Custom/card_with_animation.dart';
 import 'package:portfolio/Widgets/Custom/card_with_text.dart';
@@ -22,6 +23,7 @@ class ProjectItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
 
+    final color =HelperFunctions.convertStringToColor(project?.platform?.color??"");
     return AnimatedCardWidget(
         paddingVert: 0,
         width: context.isLarge ? 268 : context.isSmall ? double.infinity:260,
@@ -45,12 +47,12 @@ class ProjectItemCard extends StatelessWidget {
                       maxLines: 2,
                     ).expand,
                     CardWithText(
-                      text: project?.platform ?? "",
-                      color: colors.accent.withValues(alpha: 0.2),
+                      text: project?.platform?.name ?? "",
+                      color: (color?? colors.accent).withValues(alpha: 0.2),
                       borderColor:Colors.transparent,
-                      textColor: colors.accent,
+                      textColor:color?? colors.accent,
                       maxLine: 2,
-                      style: AppTextStyles.titleCardSmall(context:context,color: colors.accent),
+                      style: AppTextStyles.titleCardSmall(context:context,color:color?? colors.accent),
                     )
                   ],
                 ),

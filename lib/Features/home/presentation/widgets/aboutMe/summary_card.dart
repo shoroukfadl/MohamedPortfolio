@@ -24,7 +24,7 @@ class LargeSummaryCard extends StatelessWidget {
     final colors = context.colors;
 
     return Container(
-      width: 300,
+      width: 260,
       color: colors.surface,
       child: RawScrollbar(
           thumbVisibility: true,

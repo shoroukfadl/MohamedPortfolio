@@ -4,24 +4,31 @@ import 'package:portfolio/Features/home/presentation/widgets/products/project_ca
 
 class ProjectsList extends StatelessWidget {
   final List<ProjectEntity> projects;
+  final double height;
+  final int countPerRow;
 
   const ProjectsList({
     super.key,
+    this.countPerRow=3,
+    this.height =200,
     this.projects = const [],
   });
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 16,
-      runSpacing: 16,
-      children: [
-        ...List.generate(
-            projects.length,
-            (i) => ProjectItemCard(
-                  project: projects[i],
-                ))
-      ],
+    return         GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount:countPerRow,
+          mainAxisExtent: height,
+          mainAxisSpacing: 24,
+          crossAxisSpacing: 8),
+      itemBuilder: (c, u) => ProjectItemCard(
+       project: projects[u],
+
+      ),
+      itemCount: projects.length,
     );
   }
 }

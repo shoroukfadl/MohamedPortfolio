@@ -65,6 +65,7 @@ class MediumHomeView extends StatelessWidget {
                     skills: state.data?.skills ?? [],
                     iconSize: 22,
                     countPerRow: 2,
+                    height: 144,
 
                   );
                 })),
@@ -95,6 +96,8 @@ class MediumHomeView extends StatelessWidget {
                 return MyProjectsWidget(
                   projects: state.data?.projects ?? [],
                   hozPadding: tabletHozPadding,
+                  height: 216,
+                  countPerRow: 2,
 
                 );
               }),
