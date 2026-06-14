@@ -33,7 +33,7 @@ class SkillCard extends StatelessWidget {
             style: (
                 AppTextStyles.titleCardLarge(
                   context: context,
-                  color: colors.secondary,
+                  color: colors.text1,
                 )),
           ),
           Wrap(
@@ -44,12 +44,13 @@ class SkillCard extends StatelessWidget {
                   skill?.skills.length ?? 0,
                   (i) => CardWithText(
                         text: (skill?.skills[i].skillName ?? ""),
-                        style: AppTextStyles.titleCardSmall(context:context,color: colors.text1),
+                        style: AppTextStyles.titleCardSmall(context:context,color: colors.text2),
                         maxLine: 3,
-                        border: 100,
-                        color: colors.surface,
+                        border: 4,
+                        hozPadding: 8,
+                        color: colors.border.withValues(alpha: 0.4),
                         borderColor: colors.border,
-                        textColor: colors.text1,
+                        textColor: colors.text2,
                       ))
             ],
           )

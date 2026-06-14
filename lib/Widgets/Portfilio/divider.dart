@@ -3,13 +3,14 @@ import 'package:portfolio/Utilities/extensions.dart';
 
 class DividerWidget extends StatelessWidget {
   final double thickness;
-  const DividerWidget({super.key, this.thickness = 1});
+  final Color? color;
+  const DividerWidget({super.key, this.thickness = 1, this.color});
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Divider(
-      color: colors.border,
+      color: color??colors.border,
       thickness: thickness,
     );
   }
@@ -30,6 +31,27 @@ class GradintDividerWidget extends StatelessWidget {
       height: thickness,
       decoration:
           BoxDecoration(gradient: LinearGradient(colors: [color1, color2])),
+    );
+  }
+}
+
+class VertGradintDividerWidget extends StatelessWidget {
+  final double thickness,height;
+  final Color color1, color2;
+  const VertGradintDividerWidget(
+      {super.key,
+        this.thickness = 1,
+        this.height =20,
+        required this.color1,
+        required this.color2});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: thickness,
+      decoration:
+      BoxDecoration(gradient: LinearGradient(colors: [color1, color2])),
     );
   }
 }

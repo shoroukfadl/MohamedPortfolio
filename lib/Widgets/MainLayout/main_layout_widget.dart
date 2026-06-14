@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/presentation/widgets/aboutMe/summary_card.dart';
 import 'package:portfolio/Utilities/extensions.dart';
 import 'package:portfolio/Widgets/Buttons/theme_button.dart';
+import 'package:portfolio/Widgets/MainLayout/AppBar/home_app_bar.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
 
@@ -27,26 +28,15 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
     return Scaffold(
       key: GlobalKeys.scaffoldKey,
       backgroundColor: colors.background,
-      floatingActionButton: const ThemeButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton:           const FloatingAppBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterTop,
       body: SelectionArea(
-        child: Transform.scale(
-          scale: scale,
-          alignment: Alignment.center,
-          child: Center(
-            child: SizedBox(
-              width: _designWidth,
-              child: Row(
-                children: [
-                  if (context.isLarge)
-                    const LargeSummaryCard(),
-                  widget.child.expand,
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+      child: OverflowBox(
+      maxWidth: _designWidth,         // tell Flutter: "I know it's wide, don't overflow"
+      child: widget.child,
+
+    ),
+    ),
     );
   }
 }

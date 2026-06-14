@@ -10,9 +10,9 @@ class SpacerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        16.0.heightBox,
-        const DividerWidget(),
-        16.0.heightBox,
+        32.0.heightBox,
+        // const DividerWidget(),
+        // 16.0.heightBox,
       ],
     );
   }

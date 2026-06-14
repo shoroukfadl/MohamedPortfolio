@@ -41,7 +41,7 @@ class EducationContentWidget extends StatelessWidget {
         Text(
           item.degree ?? "",
           style: AppTextStyles.medium12(
-            color: colors.accent,
+            color: colors.secondary,
           ),
         ),
 

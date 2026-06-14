@@ -30,8 +30,8 @@ class ExperienceSection extends StatelessWidget {
           key: GlobalKeys.experince,
         ),
         ...experiences.map((exp) {
-          return ExperinceItemCard(
-            item: exp,
+          return ExperienceCard(
+            experience: exp,
 
           );
         }),

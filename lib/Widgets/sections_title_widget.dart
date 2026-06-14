@@ -21,23 +21,26 @@ class SectionsTitleWidget extends StatelessWidget {
 
     return Row(
       children: [
-        Icon(icon,size: 18,color: colors.text1,),
-        4.0.widthBox,
+        SizedBox(width:20,child:  DividerWidget(thickness: 2,color: colors.secondary,)),
+        8.0.widthBox,
+
         Text(
           title,
-          style: AppTextStyles.sectionTitle(context: context ,color: colors.text1),
-        ),
-        24.0.widthBox,
-        const DividerWidget().expand,
+          style: AppTextStyles.sectionTitle(context: context ,color: colors.text2),
+        ).expand,
+
+
         if (subtitle != null)
          ... [
         24.0.widthBox,
            CardWithText(
             text: subtitle!,
-            textColor: colors.accent,
-            color: colors.accent.withValues(alpha: 0.2),
-            borderColor: colors.accent,
-            style:  AppTextStyles.titleCardSmall(context: context,color: colors.accent),
+            textColor: colors.secondary,
+            color: colors.secondary25,
+            hozPadding: 4,
+            vertPadding: 4,
+            borderColor: colors.secondary25,
+            style:  AppTextStyles.titleCardSmall(context: context,color: colors.secondary),
           ),]
       ],
     );

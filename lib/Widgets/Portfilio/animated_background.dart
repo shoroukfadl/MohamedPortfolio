@@ -47,7 +47,7 @@ class AnimatedBackground extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    colors.accent.withValues(alpha: 0.13),
+                    colors.secondary.withValues(alpha: 0.13),
                     Colors.transparent,
                   ],
                 ),

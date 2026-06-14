@@ -31,7 +31,7 @@ class CustomIconWithBackgroundWidget extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(buttonSize != null ? buttonSize! / 8 : 4),
           color: color ?? colors.background,
-          border: Border.all(color: colors.accent),
+          border: Border.all(color: colors.secondary),
           boxShadow: [
             if (showShadow)
               BoxShadow(
@@ -46,7 +46,7 @@ class CustomIconWithBackgroundWidget extends StatelessWidget {
         height: iconSize ?? 20.0,
         errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
         colorFilter:
-            ColorFilter.mode(iconColor ?? colors.accent, BlendMode.srcIn),
+            ColorFilter.mode(iconColor ?? colors.secondary, BlendMode.srcIn),
       ),
     );
   }

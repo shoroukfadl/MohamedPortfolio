@@ -15,146 +15,78 @@ class HomeSummarySection extends StatelessWidget {
   final ProfileEntity? profile;
   final int projectsNumber, certNumber;
   final double hozPadding;
+  final double size;
+
 
   const HomeSummarySection({
     super.key,
     this.hozPadding = desktopHozPadding,
+    this.size = 120,
     required this.profile,
     required this.projectsNumber,
     required this.certNumber,
+
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-
-    // للشاشات الصغيرة (Mobile / Tablet)
-    if (!context.isLarge) {
-      return Stack(
-        clipBehavior: Clip.none,
-        children: [
-          AnimatedBackground(
-            height: double.infinity,
-            child: _SmallContent(colors),
-          ),
-
-          Positioned(
-            top: 16,
-            left: hozPadding,
-            right: hozPadding,
-            child: const MenuButton(),
-          ),
-        ],
-      );
-    }
-
     return AnimatedBackground(
       height: double.infinity,
-      child: _LargeContent(colors),
+      child: Padding(
+        padding: EdgeInsets.only(left: hozPadding, right: hozPadding, top: 32 ,bottom: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _TagBadge(),
+
+            const SizedBox(height: 16),
+            SummarySection(profile: profile,size: size,),
+            const SizedBox(height: 8),
+            const DividerWidget(),
+            const SizedBox(height: 8),
+            _Headline(titleStyle: AppTextStyles.headline(context:context,color: colors.text1)),
+            const SizedBox(height: 8),
+            Text(
+              profile?.summary ?? "",
+              style: AppTextStyles.regular10(
+                color: colors.text3,
+              ),
+            ),
+            const SizedBox(height: 8),
+            const DividerWidget(
+              thickness: 0.5,
+            ),
+            const SizedBox(height: 8),
+            StatsRow(
+              numStyle: AppTextStyles.titleCardLarge(context: context),
+              titleStyle: AppTextStyles.titleCardSmall(context: context),
+              items: [
+                Stat(
+                  value: projectsNumber,
+                  name: 'Projects Tested',
+                ),
+                Stat(
+                  value: certNumber,
+                  name: 'Certifications',
+                ),
+                const Stat(
+                  value: 2,
+                  name: 'Testing Tracks',
+                ),
+                const Stat(
+                  value: 100,
+                  subTitle: '%',
+                  name: 'Attention to Detail',
+                ),
+              ],
+            ),
+          ],
+        ),
+      )
     );
   }
 
-  // ──────────────────────────────────────────
-  // LARGE CONTENT (DESKTOP)
-  // ──────────────────────────────────────────
-  Widget _LargeContent(AppColors colors) => Padding(
-    padding: EdgeInsets.only(left: hozPadding, right: hozPadding, top: 40),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _TagBadge(),
-        const SizedBox(height: 16),
-        const _Headline(),
-        const SizedBox(height: 16),
-        Text(
-          profile?.summary ?? "",
-          style: AppTextStyles.regular14(
-            color: colors.text3,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Divider(
-          color: colors.border,
-          thickness: 0.5,
-        ),
-        const SizedBox(height: 16),
-        StatsRow(
-          items: [
-            Stat(
-              value: projectsNumber,
-              name: 'Projects Tested',
-            ),
-            Stat(
-              value: certNumber,
-              name: 'Certifications',
-            ),
-            const Stat(
-              value: 2,
-              name: 'Testing Tracks',
-            ),
-            const Stat(
-              value: 100,
-              subTitle: '%',
-              name: 'Attention to Detail',
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-      ],
-    ),
-  );
-
-  // ──────────────────────────────────────────
-  // SMALL CONTENT (MOBILE / TABLET)
-  // ──────────────────────────────────────────
-  Widget _SmallContent(AppColors colors) => Padding(
-    padding: EdgeInsets.only(left: hozPadding, right: hozPadding, top: 56 ,bottom: 16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SummarySection(profile: profile),
-        const SizedBox(height: 8),
-        const DividerWidget(),
-        const SizedBox(height: 8),
-        _Headline(titleStyle: AppTextStyles.semiBold14(color: colors.text1)),
-        const SizedBox(height: 8),
-        Text(
-          profile?.summary ?? "",
-          style: AppTextStyles.regular10(
-            color: colors.text3,
-          ),
-        ),
-        const SizedBox(height: 8),
-        const DividerWidget(
-          thickness: 0.5,
-        ),
-        const SizedBox(height: 8),
-        StatsRow(
-          numStyle: AppTextStyles.medium20(),
-          titleStyle: AppTextStyles.regular10(),
-          items: [
-            Stat(
-              value: projectsNumber,
-              name: 'Projects Tested',
-            ),
-            Stat(
-              value: certNumber,
-              name: 'Certifications',
-            ),
-            const Stat(
-              value: 2,
-              name: 'Testing Tracks',
-            ),
-            const Stat(
-              value: 100,
-              subTitle: '%',
-              name: 'Attention to Detail',
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
 }
 
 // ──────────────────────────────────────────
@@ -167,9 +99,9 @@ class _TagBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: colors.accent.withValues(alpha: 0.1),
+        color: colors.secondary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(100),
-        border: Border.all(color: colors.accent.withValues(alpha: 0.2)),
+        border: Border.all(color: colors.secondary.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -177,7 +109,7 @@ class _TagBadge extends StatelessWidget {
           const Text('🧪', style: TextStyle(fontSize: 12)),
           const SizedBox(width: 6),
           Text('QA · SOFTWARE TESTING',
-              style: AppTextStyles.regular12(color: colors.accent)),
+              style: AppTextStyles.regular12(color: colors.secondary)),
         ],
       ),
     );
@@ -205,7 +137,7 @@ class _Headline extends StatelessWidget {
           WidgetSpan(
             child: ShaderMask(
               shaderCallback: (bounds) => LinearGradient(
-                colors: [colors.secondary, colors.secondary, colors.accent],
+                colors: [colors.secondary, colors.secondary, colors.secondary],
               ).createShader(bounds),
               child: Text(
                 'One Test Case at a Time.',

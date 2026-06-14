@@ -87,7 +87,7 @@ import '../../Utilities/extensions.dart';
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(radius ?? 16.0),
       borderSide: BorderSide(
-        color: color ?? colors.accent,
+        color: color ?? colors.secondary,
         width: width ?? 1.0,
       ),
     );
@@ -115,7 +115,7 @@ import '../../Utilities/extensions.dart';
         keyboardType: textInputType,
         onChanged: onchange,
         style: AppTextStyles.textFormFieldContent.copyWith(
-              color: colors.accent,
+              color: colors.secondary,
             ),
         enabled: enable,
         controller: controller,
@@ -123,7 +123,7 @@ import '../../Utilities/extensions.dart';
         textAlign: textAlign ?? TextAlign.start,
         autofocus: autoFocus,
         mouseCursor: isClickable ? SystemMouseCursors.click : null,
-        cursorColor: colors.accent,
+        cursorColor: colors.secondary,
         onTap: onTap,
         onFieldSubmitted: (_) => _handleFieldSubmitted(context),
         textInputAction: textInputAction ??
@@ -156,11 +156,11 @@ import '../../Utilities/extensions.dart';
           labelText: lableText,
           labelStyle:
               AppTextStyles.textFormFieldLableTitle.copyWith(
-                    color: colors.accent,
+                    color: colors.secondary,
                   ),
           errorStyle:
               AppTextStyles.textFormFieldErrorMessage.copyWith(
-                    color: colors.accentCyan,
+                    color: colors.secondaryCyan,
                   ),
           enabledBorder:
               getBorder(context, radius: borderRadiusValue, color: borderColor),
@@ -172,7 +172,7 @@ import '../../Utilities/extensions.dart';
               getBorder(context, radius: borderRadiusValue, color: borderColor),
           focusedErrorBorder: getBorder(context,
               radius: borderRadiusValue,
-              color: colors.accent),
+              color: colors.secondary),
           isDense: isDense ?? false,
           fillColor: (backGroundColor ?? colors.background),
           filled: true,
@@ -275,7 +275,7 @@ class CustomTextFormField extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(radius ?? 100.0),
       borderSide: BorderSide(
-        color: color ?? context.colors.accent,
+        color: color ?? context.colors.secondary,
         width: width ?? 1.0,
       ),
     );
@@ -302,7 +302,7 @@ class CustomTextFormField extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.start,
       autofocus: autoFocus,
       mouseCursor: isClickable ? SystemMouseCursors.click : null,
-      cursorColor: colors.accent,
+      cursorColor: colors.secondary,
       onTap: onTap,
       onFieldSubmitted: (_) => _handleFieldSubmitted(context),
       textInputAction: textInputAction ??
@@ -335,11 +335,11 @@ class CustomTextFormField extends StatelessWidget {
         labelText: lableText,
         //  labelStyle:
         // AppTextStyles.textFormFieldLableTitle.copyWith(
-        //   color: colors.accent,
+        //   color: colors.secondary,
         // ),
         // errorStyle:
         // AppTextStyles.textFormFieldErrorMessage.copyWith(
-        //   color: colors.accentCyan,
+        //   color: colors.secondaryCyan,
         // ),
         enabledBorder:
             getBorder(context, radius: borderRadiusValue, color: borderColor),

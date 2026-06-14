@@ -25,9 +25,9 @@ class CustomDottedWidget extends StatelessWidget {
       height: size ?? 16.0,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: dotsColor ?? (isSelected ? colors.accent : Colors.transparent),
+          color: dotsColor ?? (isSelected ? colors.secondary : Colors.transparent),
           border: Border.all(
-            color: colors.accent,
+            color: colors.secondary,
           )),
       duration: const Duration(milliseconds: 400),
     );

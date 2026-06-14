@@ -64,7 +64,7 @@ class _CustomDrawerState extends State<CustomDrawer>
               alignment: AlignmentDirectional.topStart,
               child: Icon(
                 Icons.close,
-                color: colors.accent,
+                color: colors.secondary,
                 size: context.isSmall ? 24 : 32,
               ),
             ),
@@ -123,7 +123,7 @@ class _CustomDrawerState extends State<CustomDrawer>
               // String? url = HomeController().user?.cv;
               // if (url != null) HelperFunctions.openUrl(url, context);
             },
-            btnColor: colors.accent,
+            btnColor: colors.secondary,
             width: 120,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -131,14 +131,14 @@ class _CustomDrawerState extends State<CustomDrawer>
                 Text(
                   Strings.resume.translate,
                   style: AppTextStyles.regular14().copyWith(
-                    color: colors.accent25,
+                    color: colors.secondary25,
                   ),
                 ),
                 4.0.widthBox,
                 // SvgPicture.asset(
                 //   Assets.iconsDownload,
                 //   colorFilter: ColorFilter.mode(
-                //       colors.accent25, BlendMode.srcIn),
+                //       colors.secondary25, BlendMode.srcIn),
                 //   width: 16,
                 //   height: 16,
                 // )
@@ -155,10 +155,10 @@ class _CustomDrawerState extends State<CustomDrawer>
             child: Text(
               Strings.mail.translate,
               style: AppTextStyles.regular14().copyWith(
-                color: colors.accent,
+                color: colors.secondary,
               ),
             ),
-            btnColor: colors.accent25,
+            btnColor: colors.secondary25,
           ),
         ],
       ).paddingSymmetric(horizontal: 16, vertical: 16),
@@ -174,7 +174,7 @@ class _CustomDrawerState extends State<CustomDrawer>
       child: AppTextWidget(
         title,
         style: AppTextStyles.regular16().copyWith(
-            color: colors.accent,
+            color: colors.secondary,
             decoration: isSelected ? TextDecoration.underline : null),
       ),
     );
@@ -214,7 +214,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                       : 16),
               decoration: BoxDecoration(
                 shape: isMenuExpanded ? BoxShape.rectangle : BoxShape.circle,
-                color: !isSelected ? Colors.transparent : colors.accent,
+                color: !isSelected ? Colors.transparent : colors.secondary,
               ),
               child: isMenuExpanded
                   ? Row(
@@ -224,14 +224,14 @@ class LargeDrawerItemWidget extends StatelessWidget {
                           width: context.isSmall ? 24 : 32,
                           height: context.isSmall ? 24 : 32,
                           colorFilter: ColorFilter.mode(
-                              isSelected ? colors.text2 : colors.accent,
+                              isSelected ? colors.text2 : colors.secondary,
                               BlendMode.srcIn),
                         ),
                         8.0.widthBox,
                         AppTextWidget(
                           title,
                           style: AppTextStyles.regular14().copyWith(
-                              color: isSelected ? colors.text2 : colors.accent,
+                              color: isSelected ? colors.text2 : colors.secondary,
                               fontSize: context.isSmall ? 12 : 16),
                         ),
                         const Spacer(),
@@ -240,7 +240,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                           width: context.isSmall ? 24 : 32,
                           height: context.isSmall ? 24 : 32,
                           colorFilter: ColorFilter.mode(
-                              isSelected ? colors.text2 : colors.accent,
+                              isSelected ? colors.text2 : colors.secondary,
                               BlendMode.srcIn),
                         ),
                       ],
@@ -251,7 +251,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                         width: context.isSmall ? 24 : 32,
                         height: context.isSmall ? 24 : 32,
                         colorFilter: ColorFilter.mode(
-                            isSelected ? colors.text2 : colors.accent,
+                            isSelected ? colors.text2 : colors.secondary,
                             BlendMode.srcIn),
                       ),
                     ),
@@ -275,7 +275,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                         : 16),
                 decoration: BoxDecoration(
                   shape: isMenuExpanded ? BoxShape.rectangle : BoxShape.circle,
-                  color: !isSelected ? Colors.transparent : colors.accent,
+                  color: !isSelected ? Colors.transparent : colors.secondary,
                 ),
                 child: isMenuExpanded
                     ? Row(
@@ -285,7 +285,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                             width: context.isSmall ? 24 : 32,
                             height: context.isSmall ? 24 : 32,
                             colorFilter: ColorFilter.mode(
-                                isSelected ? colors.text2 : colors.accent,
+                                isSelected ? colors.text2 : colors.secondary,
                                 BlendMode.srcIn),
                           ),
                           8.0.widthBox,
@@ -293,7 +293,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                             title,
                             style: AppTextStyles.regular14().copyWith(
                                 color:
-                                    isSelected ? colors.text2 : colors.accent,
+                                    isSelected ? colors.text2 : colors.secondary,
                                 fontSize: context.isSmall ? 12 : 16),
                           ),
                           const Spacer(),
@@ -302,7 +302,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                             width: context.isSmall ? 24 : 32,
                             height: context.isSmall ? 24 : 32,
                             colorFilter: ColorFilter.mode(
-                                isSelected ? colors.text2 : colors.accent,
+                                isSelected ? colors.text2 : colors.secondary,
                                 BlendMode.srcIn),
                           ),
                         ],
@@ -313,7 +313,7 @@ class LargeDrawerItemWidget extends StatelessWidget {
                           width: context.isSmall ? 24 : 32,
                           height: context.isSmall ? 24 : 32,
                           colorFilter: ColorFilter.mode(
-                              isSelected ? colors.text2 : colors.accent,
+                              isSelected ? colors.text2 : colors.secondary,
                               BlendMode.srcIn),
                         ),
                       ),

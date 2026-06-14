@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Features/home/domain/entities/experince_entity.dart';
+import 'package:portfolio/Utilities/Constants/constants.dart';
 import 'package:portfolio/Utilities/Constants/date_helper.dart';
 import 'package:portfolio/Utilities/extensions.dart';
 import 'package:portfolio/Widgets/Custom/card_with_animation.dart';
@@ -8,14 +9,13 @@ import 'package:portfolio/Widgets/Portfilio/point_text.dart';
 
 import '../../../../../Core/Language/app_styles.dart';
 
-class ExperinceItemCard extends StatelessWidget {
+class ExperienceItemCard extends StatelessWidget {
   final ExperienceEntity? item;
 
-  const ExperinceItemCard({
+  const ExperienceItemCard({
     super.key,
     this.item,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,12 @@ class ExperinceItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(item?.companyName ?? "",
-                      style: AppTextStyles.titleCardLarge(context: context,
-                          color: colors.secondary)),
+                      style: AppTextStyles.titleCardLarge(
+                          context: context, color: colors.secondary)),
                   const SizedBox(height: 4),
                   Text(item?.jobTitle ?? "",
-                      style: AppTextStyles.label(context:context,color: colors.text1))
+                      style: AppTextStyles.label(
+                          context: context, color: colors.text1))
                 ],
               ).expand,
               Container(
@@ -46,14 +47,15 @@ class ExperinceItemCard extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: !isActive
-                      ? colors.accent25.withOpacity(0.2)
+                      ? colors.secondary25.withOpacity(0.2)
                       : colors.secondary.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  "${item?.startDate == null ?"":mmYYYY(item!.startDate!)} - ${(item?.endDate == null ?"Present":mmYYYY(item!.endDate!))}",
-                  style:(AppTextStyles.titleCardSmall(context: context)).copyWith(
-                    color: isActive ? colors.secondary : colors.accent50,
+                  "${item?.startDate == null ? "" : mmYYYY(item!.startDate!)} - ${(item?.endDate == null ? "Present" : mmYYYY(item!.endDate!))}",
+                  style:
+                      (AppTextStyles.titleCardSmall(context: context)).copyWith(
+                    color: isActive ? colors.secondary : colors.secondary50,
                   ),
                 ),
               ),
@@ -66,12 +68,170 @@ class ExperinceItemCard extends StatelessWidget {
                     children: [
                       PointText(
                           point: (item?.responsibilities[i] ?? ""),
-                          style: AppTextStyles.body(context:context,color: colors.text2)),
-                      if (i <
-                          (item?.responsibilities.length ?? 0) - 1)
+                          style: AppTextStyles.body(
+                              context: context, color: colors.text2)),
+                      if (i < (item?.responsibilities.length ?? 0) - 1)
                         const DividerWidget(thickness: 0.6)
                     ],
                   )),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Experience Card ──────────────────────────────────────────────────────────
+
+class ExperienceCard extends StatefulWidget {
+  final ExperienceEntity experience;
+  final bool initiallyExpanded;
+
+  const ExperienceCard({
+    super.key,
+    required this.experience,
+    this.initiallyExpanded = false,
+  });
+
+  @override
+  State<ExperienceCard> createState() => _ExperienceCardState();
+}
+
+class _ExperienceCardState extends State<ExperienceCard>
+    with SingleTickerProviderStateMixin {
+  late bool _expanded;
+  late AnimationController _controller;
+  late Animation<double> _expandAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _expanded = widget.initiallyExpanded;
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      value: _expanded ? 1.0 : 0.0,
+    );
+    _expandAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _toggle() {
+    setState(() => _expanded = !_expanded);
+    _expanded ? _controller.forward() : _controller.reverse();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return SideAnimatedCard(
+
+      child: Column(
+        children: [
+          // ── Header ──
+          InkWell(
+            onTap: _toggle,
+            hoverColor: Colors.transparent,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(cardRadius)),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(widget.experience.companyName ?? "",
+                              style: AppTextStyles.titleCardLarge(
+                                  context: context, color: colors.text1)),
+                          const SizedBox(height: 4),
+                          if (widget.experience.status) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: colors.secondary,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        widget.experience.jobTitle ?? "",
+                        style: AppTextStyles.label(
+                            context: context, color: colors.secondary50)
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Period badge + chevron
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 5),
+                      decoration: BoxDecoration(
+                        color:  widget.experience.status ==true ? colors.secondary25 : colors.border.withValues(alpha: 0.4),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "${widget.experience.startDate == null ? "" : mmYYYY(widget.experience.startDate!)} - ${(widget.experience.endDate == null ? "Present" : mmYYYY(widget.experience.endDate!))}",
+                        style:
+                        (AppTextStyles.titleCardSmall(context: context)).copyWith(
+                          color: widget.experience.status ==true ? colors.secondary : colors.text2,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    AnimatedRotation(
+                      turns: _expanded ? 0.5 : 0,
+                      duration: const Duration(milliseconds: 300),
+                      child: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: colors.text2,
+                        size: 22,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          16.0.heightBox,
+          // ── Expandable bullet points ──
+          SizeTransition(
+            sizeFactor: _expandAnimation,
+            child: Column(
+              spacing: 4,
+              children: [
+                ...List.generate(
+                    widget.experience.responsibilities.length ,
+                        (i) => Column(
+                          spacing: 4,
+                      children: [
+                        PointText(
+                            point: (widget.experience.responsibilities[i] ?? ""),
+                            style: AppTextStyles.body(
+                                context: context, color: colors.text2)),
+                        if (i < (widget.experience.responsibilities.length ?? 0) - 1)
+                          const DividerWidget(thickness: 0.6)
+                      ],
+                    ))
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -34,21 +34,23 @@ class _HomeAppBarItemState extends State<HomeAppBarItem> {
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
         child: Container(
-          height: 40,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          color: _isHovered
-              ? colors.accent.withValues(alpha: 0.2)
-              : Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          decoration: BoxDecoration(
+            color: _isHovered
+                ? colors.border
+                : Colors.transparent,
+            borderRadius: const BorderRadius.all(Radius.circular(100))
+          ),
           child: Row(
-            spacing: 12,
+            spacing: 4,
             children: [
               Icon(widget.icon,
-                  size: 14, color: _isHovered ? colors.accent : colors.text1),
+                  size: 14, color:colors.text2),
+              if(context.isLarge)
               Text(
                 widget.title,
-                style: AppTextStyles.medium12(
-                    color: _isHovered ? colors.accent : colors.text1),
+                style: AppTextStyles.semiBold12(
+                    color:colors.text2),
               ),
             ],
           ),

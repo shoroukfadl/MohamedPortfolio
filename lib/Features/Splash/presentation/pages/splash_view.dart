@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen>
                   return CustomPaint(
                     painter: ParticlePainter(
                       particles: _particles,
-                      color: colors.accent,
+                      color: colors.secondary,
                       progress: _particleController.value,
                     ),
                     child: const SizedBox.expand(),

@@ -50,7 +50,7 @@ class _ProfileImageState extends State<ProfileImage> {
           ),
           if(_isHovered)
           BoxShadow(
-            color:   colors.accent.withValues(alpha: 0.2),
+            color:   colors.secondary.withValues(alpha: 0.2),
             blurRadius:20,
             spreadRadius:  12 ,
           ),
@@ -73,7 +73,7 @@ class _ProfileImageState extends State<ProfileImage> {
         height: widget.height,
         width: widget.width,
         padding: 0,
-        borderColor: colors.accent,
+        borderColor: colors.secondary,
       )
         ],
       )

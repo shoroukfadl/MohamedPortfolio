@@ -63,7 +63,7 @@ class _BasicAnimatedCardWidgetState extends State<BasicAnimatedCardWidget> {
             ),
             border: Border.all(
               color: _isHovered
-                  ? (widget.animatedBorderColor ?? colors.accent)
+                  ? (widget.animatedBorderColor ?? colors.secondary)
                   : (widget.borderColor ?? colors.text3),
               width: _isHovered ? 0.6 : 0.4,
             ),
@@ -71,7 +71,7 @@ class _BasicAnimatedCardWidgetState extends State<BasicAnimatedCardWidget> {
                 ? [
                     BoxShadow(
                       color: widget.shadowColor ??
-                          colors.accent25.withValues(alpha: 0.1),
+                          colors.secondary25.withValues(alpha: 0.1),
                       blurRadius: 8,
                       spreadRadius: 4,
                     ),
@@ -112,29 +112,10 @@ class AnimatedCardWidget extends StatefulWidget {
   @override
   State<AnimatedCardWidget> createState() => _AnimatedCardWidgetState();
 }
-
 class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
     with SingleTickerProviderStateMixin {
   bool _isHovered = false;
-  late AnimationController _controller;
-  late Animation<Offset> _animation;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
-    _animation = Tween<Offset>(
-            begin: const Offset(0, 0), end: const Offset(0, -16))
-        .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,50 +123,118 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
     return MouseRegion(
         onEnter: (_) {
           setState(() => _isHovered = true);
-          _controller.forward();
         },
         onExit: (_) {
           setState(() => _isHovered = false);
-          _controller.reverse();
         },
-        child: AnimatedBuilder(
-          animation: _animation,
-          builder: (c, w) => Transform.translate(
-            offset: _animation.value,
-            child: w,
-          ),
-          child: Container(
-            width: widget.width,
-            height: widget.height,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(widget.border),
-              ),
-              border: Border.all(
-                color: _isHovered
-                    ? colors.secondary
-                    : (widget.borderColor ?? colors.border),
-                width: 1,
-              ),
-              boxShadow: _isHovered
-                  ? [
-                      BoxShadow(
-                        color: widget.shadowColor ??
-                            colors.accent.withValues(alpha: 0.1),
-                        blurRadius: 8,
-                        spreadRadius: 4,
-                      ),
-                    ]
-                  : null,
-              color: (widget.cardColor ?? colors.surface),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          width: widget.width,
+          height: widget.height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(widget.border),
             ),
-            padding: EdgeInsets.symmetric(
-                horizontal: widget.paddingHoz, vertical: widget.paddingVert),
-            child: widget.child(_isHovered),
+            border: Border.all(
+              color: _isHovered
+                  ? colors.secondary
+                  : (widget.borderColor ?? colors.border),
+              width: 1,
+            ),
+            boxShadow: _isHovered ?[
+              BoxShadow(
+                color: colors.border,
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset:const Offset (0,4)
+              )
+            ]:null,
+            color: (widget.cardColor ?? colors.surface),
           ),
+          padding: EdgeInsets.symmetric(
+              horizontal: widget.paddingHoz, vertical: widget.paddingVert),
+          child: widget.child(_isHovered),
         ));
   }
 }
+
+// class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
+//     with SingleTickerProviderStateMixin {
+//   bool _isHovered = false;
+//   late AnimationController _controller;
+//   late Animation<Offset> _animation;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     _controller = AnimationController(
+//         vsync: this, duration: const Duration(milliseconds: 200));
+//     _animation = Tween<Offset>(
+//             begin: const Offset(0, 0), end: const Offset(0, -16))
+//         .animate(
+//             CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine));
+//   }
+//
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final colors = context.colors;
+//     return MouseRegion(
+//         onEnter: (_) {
+//           setState(() => _isHovered = true);
+//           _controller.forward();
+//         },
+//         onExit: (_) {
+//           setState(() => _isHovered = false);
+//           _controller.reverse();
+//         },
+//         child: AnimatedScale(
+//           duration: const Duration(microseconds: 250),
+//           scale: _isHovered?0.88:1,
+//           child: AnimatedBuilder(
+//             animation: _animation,
+//             builder: (c, w) => Transform.translate(
+//               offset: _animation.value,
+//               child: w,
+//             ),
+//             child: Container(
+//               width: widget.width,
+//               height: widget.height,
+//               decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.all(
+//                   Radius.circular(widget.border),
+//                 ),
+//                 border: Border.all(
+//                   color: _isHovered
+//                       ? colors.secondary
+//                       : (widget.borderColor ?? colors.border),
+//                   width: 1,
+//                 ),
+//                 boxShadow: _isHovered
+//                     ? [
+//                         BoxShadow(
+//                           color: widget.shadowColor ??
+//                               colors.secondary.withValues(alpha: 0.1),
+//                           blurRadius: 8,
+//                           spreadRadius: 4,
+//                         ),
+//                       ]
+//                     : null,
+//                 color: (widget.cardColor ?? colors.surface),
+//               ),
+//               padding: EdgeInsets.symmetric(
+//                   horizontal: widget.paddingHoz, vertical: widget.paddingVert),
+//               child: widget.child(_isHovered),
+//             ),
+//           ),
+//         ));
+//   }
+// }
 
 
 
@@ -221,16 +270,16 @@ class _SideAnimatedCardState extends State<SideAnimatedCard> {
           decoration: BoxDecoration(
             border: Border(
               left: BorderSide(
-                color: _isHovered ? colors.accent : colors.secondary,
-                width: _isHovered ? 3 : 2,
+                color: _isHovered ? colors.secondary : colors.border,
+                width: _isHovered ? 3 : 1,
               ),
               bottom: BorderSide(
-                color: _isHovered ? colors.accent : colors.secondary,
+                color: _isHovered ? colors.secondary : colors.border,
                 width: _isHovered ? 3 : 0.5,
               ),
             ),
             color: colors.surface,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(cardRadius),
           ),
           padding: const EdgeInsets.all(16),
           child: widget.child,

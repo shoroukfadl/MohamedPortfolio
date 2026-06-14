@@ -68,7 +68,7 @@ class CustomButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius:
               borderRadius ?? BorderRadius.circular(borderRadiusValue ?? 100.0),
-          color: btnColor ?? colors.accent,
+          color: btnColor ?? colors.secondary,
           border: Border.all(color: borderColor ?? Colors.transparent),
         ),
         child: isLoading

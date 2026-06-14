@@ -12,16 +12,15 @@ class PointText extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 4,
       children: [
-        Icon(
-          Icons.keyboard_arrow_right,
-          size: 12,
-          color: colors.accent,
+        CircleAvatar(
+          radius: 2,
+          backgroundColor: colors.text3,
         ),
         Text(point,
                 maxLines: 2,
-                style: style ?? AppTextStyles.regular12(color: colors.text3))
+                style:  AppTextStyles.body(context:context,color: colors.text2))
             .expand
       ],
     );

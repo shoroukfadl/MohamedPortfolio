@@ -14,13 +14,13 @@ abstract class HelperFunctions {
     showModalBottomSheet(
         useSafeArea: true,
         isScrollControlled: isFullScreen,
-        backgroundColor: backgroundColor ?? colors.accent,
+        backgroundColor: backgroundColor ?? colors.secondary,
         showDragHandle: true,
         context: context,
         builder: (context) {
           return BottomSheet(
               onClosing: () {},
-              backgroundColor: backgroundColor ?? colors.accent,
+              backgroundColor: backgroundColor ?? colors.secondary,
               builder: (context) {
                 return widget;
               });

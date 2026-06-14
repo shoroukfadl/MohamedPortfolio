@@ -36,18 +36,11 @@ class CertificationSection extends StatelessWidget {
           itemCount: data.length,
           separatorBuilder: (c, i) => 8.0.heightBox,
           itemBuilder: (context, index) {
-            return Column(
-              children: [
-                CertificationCard(
-                  item: data[index],
-                  imageHeight: 40,
-                  imageWidth: 64,
-                ),
-                if (index < data.length - 1)
-                 const DividerWidget(
-                    thickness: 0.8,
-                  )
-              ],
+            return CertificationCard(
+              item: data[index],
+              imageHeight: 40,
+              imageWidth: 64,
+              index: index+1,
             );
           },
         ),

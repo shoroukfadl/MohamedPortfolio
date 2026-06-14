@@ -34,8 +34,8 @@ class ProjectItemCard extends StatelessWidget {
               children: [
                 GradintDividerWidget(
                   color1: colors.secondary,
-                  color2:color?? colors.accent,
-                  thickness: 4,
+                  color2:color?? colors.secondary,
+                  thickness: 2,
                 ),
                 Row(
                   spacing: 8,
@@ -47,23 +47,23 @@ class ProjectItemCard extends StatelessWidget {
                     ).expand,
                     CardWithText(
                       text: project?.platform?.name ?? "",
-                      color: (color?? colors.accent).withValues(alpha: 0.2),
+                      color: (color?? colors.secondary).withValues(alpha: 0.1),
                       borderColor:Colors.transparent,
-                      textColor:color?? colors.accent,
+                      textColor:color?? colors.secondary,
                       maxLine: 2,
-                      style: AppTextStyles.titleCardSmall(context:context,color:color?? colors.accent),
+                      border: 8,
+                      style: AppTextStyles.titleCardSmall(context:context,color:color?? colors.secondary),
                     )
                   ],
                 ),
                 Text('Test Cases'.toUpperCase(),
-                    style: AppTextStyles.subtitleCard(context:context,color: colors.text2)),
+                    style: AppTextStyles.subtitleCard(context:context,color: colors.text3)),
                 ...List.generate(
                   project?.keyTasks.length ?? 0,
                   (i) => Column(
                     children: [
                       PointText(
-                          point: project?.keyTasks[i] ?? "",
-                          style: AppTextStyles.body(context:context,color: colors.text2)),
+                          point: project?.keyTasks[i] ?? "",),
                       if (i < (project?.keyTasks.length ?? 0) - 1)
                         const DividerWidget(),
                     ],

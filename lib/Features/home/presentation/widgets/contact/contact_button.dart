@@ -42,14 +42,14 @@ class _ContactButtonState extends State<ContactButton> {
           onPressed: widget.onTap,
           btnColor: widget.backgroundColor ?? Colors.transparent,
           borderColor: hover
-              ? colors.accent
+              ? colors.secondary
               : widget.borderColor ?? colors.text1.withValues(alpha: 0.7),
           width: widget.width,
           height: widget.height,
           child: Icon(
             widget.icon,
             color: hover
-                ? colors.accent
+                ? colors.secondary
                 : widget.iconColor ?? colors.text1.withValues(alpha: 0.7),
             size: widget.iconSize,
           ),

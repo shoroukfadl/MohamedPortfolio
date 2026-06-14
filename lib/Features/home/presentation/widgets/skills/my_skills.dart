@@ -19,7 +19,7 @@ class SkillsSection extends StatelessWidget {
         this.height=120,
       this.skills = const [],
       this.hozPadding = desktopHozPadding,
-      this.iconSize = 40,  this.countPerRow =3,});
+      this.iconSize = 40,  this.countPerRow =4,});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class SkillsSection extends StatelessWidget {
       children: [
         SectionsTitleWidget(
           icon: Portfolio.skills,
-          title: Strings.skill.translate.toUpperCase(),
+          title: Strings.mySkill.translate.toUpperCase(),
           key: GlobalKeys.skill,
         ),
         GridView.builder(
@@ -39,8 +39,8 @@ class SkillsSection extends StatelessWidget {
           gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount:countPerRow,
               mainAxisExtent: height,
-              mainAxisSpacing: 24,
-              crossAxisSpacing: 8),
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16),
           itemBuilder: (c, u) => SkillCard(
             skill: skills[u],
             iconSize: iconSize,
